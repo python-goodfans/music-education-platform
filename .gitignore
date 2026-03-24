@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+*.whl
+pip-log.txt
+*.egg
+
+# Node
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Docker
+*.dockerfile
+.dockerignore
+Dockerfile
+
+# IDEs
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
