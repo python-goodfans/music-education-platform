@@ -1,0 +1,1 @@
+Django==4.2.0\ndjangorestframework==3.14.0\ndjango-cors-headers==4.0.0\npython-decouple==3.8\nPillow==10.0.0\nmysqlclient==2.2.0\npython-multipart==0.0.6
