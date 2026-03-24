@@ -1,3 +1,21 @@
-# Dockerfile for Django Backend \n\n# Use the official Python image from the Docker Hub.\nFROM python:3.9-slim\n\n# Set the working directory in the container.\nWORKDIR /app\n\n# Copy the requirements file into the container.\nCOPY requirements.txt .\n\n# Install any dependencies.\nRUN apt-get update && apt-get install -y \
-    default-libmysqlclient-dev \
-    && pip install --no-cache-dir -r requirements.txt\n\n# Copy the rest of the application code into the container.\nCOPY . .\n\n# Set the environment variable for Django settings module.\nENV DJANGO_SETTINGS_MODULE=myapp.settings\n\n# Run the Django collectstatic command.\nRUN python manage.py collectstatic --noinput\n\n# Make port 8000 available to the world outside this container.\nEXPOSE 8000\n\n# Define the command to run the application.\nCMD [ "gunicorn", "myapp.wsgi:application", "--bind", "0.0.0.0:8000" ]\n
+# Dockerfile for Django Backend
+
+FROM python:3.8
+
+# Set the working directory
+WORKDIR /app
+
+# Copy the requirements.txt file
+COPY backend/requirements.txt .
+
+# Install dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the rest of the application
+COPY backend/ .
+
+# Expose port 8000
+EXPOSE 8000
+
+# Start the application
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
