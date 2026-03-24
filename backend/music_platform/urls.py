@@ -1,0 +1,1 @@
+from django.contrib import admin\nfrom django.urls import path, include\nfrom django.conf import settings\nfrom django.conf.urls.static import static\n\nurlpatterns = [\n    path('admin/', admin.site.urls),\n    path('api/', include('your_app.api.urls')),\n] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
